@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+
+<body style="background:url({{ url_for('static', filename='images/textured_stripes.png') }})">
+    <h1>System Login</h1>
+
+
+{% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+<form action="/login" method="POST"> <!-- onclick="ih()" > -->
+  <input type="username" name="username" placeholder="Username">
+<input type="password" name="password" placeholder="Password">
+<input type="submit" name="login_button" value="Log in">
+</form>
+
+<br>
+
+
+<form action="/retrieve_login" method="POST" >
+<input type="submit" name="retrieve_login_button" value="Retrieve login info">
+</form>
+<br><br>
+
+<!--
+<form >
+<textarea id="mytextarea"  name="prompt_text" method="POST">Text to be changed</textarea>
+</form>
+-->
+
+<br><br>
+
+<!-- TODO: get radio button to stay pressed! -->
+<form action="/safe_or_malicious_mode" method="POST" >
+  <input type="radio" name="safe_or_malicious" value="safe" onclick="this.form.submit();"> Safe activity<br>
+  <input type="radio" name="safe_or_malicious" value="malicious" onclick="this.form.submit();"> Malicious activity<br>
+  <!-- <input type="submit" value="Submit"> -->
+  
+</form>
+
+<br><br><br><br>
+
+<!--
+<form action="/run_weka" method="POST" >
+<input type="submit" name="weka_button" value="Run Weka">
+</form>
+-->
+
+{% if classification %}
+        <p>Event Classification: {{ classification }}</p>
+    {% endif %}
+
+
+<form action="/run_weka" method="POST"> <!-- onclick="ih()" > -->
+<input type="test_file" name="test_file" placeholder="test file">
+<input type="submit" name="weka_button" value="Run Weka">
+</form>
+
+<br><br><br><br>
+
+
+<form action="/shutdown" method="POST" >
+<input type="submit" name="exit_button" value="Exit System">
+</form>
+
+<script>
+
+//function ih() {
+    //document.getElementById('mytextarea').value = message;
+//}
+
+</script>
+
+
+</body>
+</html>
+
+

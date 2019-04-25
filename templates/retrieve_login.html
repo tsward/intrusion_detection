@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<body style="background:url({{ url_for('static', filename='images/textured_stripes.png') }})">
+
+<h1>Retrieve Password</h1>
+<p>Please enter your SSN and an email will be sent to you to reset your password.</p>
+
+{% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+<form action="/ssn_retrieval" method="POST" >
+  <input type="ssn" name="ssn" placeholder="SSN">
+<!-- <input type="password" name="password" placeholder="Password"> -->
+<input type="submit" value="Enter SSN">
+</form>
+
+<!--
+<textarea id="mytextarea">Text to be changed</textarea>
+-->
+
+
+
+<br><br>
+
+{% if classification %}
+        <p>Event Classification: {{ classification }}</p>
+        <br><br>
+    {% endif %}
+    
+
+
+<!--
+<form action="/shutdown" method="POST" >
+<input type="submit" name="submit_button" value="Home page">
+</form>
+-->
+
+<a href="/">Home page</a>
+
+<br><br>
+
+<form action="/shutdown" method="POST" >
+<input type="submit" name="submit_button" value="Exit System">
+</form>
+
+
+<!--
+<form action="/login" method="POST">
+  <input type="username" name="username" placeholder="Username">
+<input type="password" name="password" placeholder="Password">
+<input type="submit" value="Log in">
+</form>
+
+<script>
+
+function ih(text) {
+    document.getElementById('mytextarea').innerHTML = text;
+}
+
+</script>
+
+-->
+
+</body>
+</html>
+
+

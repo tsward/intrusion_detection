@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<body style="background:url({{ url_for('static', filename='images/textured_stripes.png') }})">
+
+<h1>Successful login, welcome to the system!</h1>
+
+
+
+
+
+<form action="/logged_in" method="POST" >
+<input type="submit" value="Logout">
+</form>
+<br><br>
+
+<form action="/shutdown" method="POST" >
+<input type="submit" name="submit_button" value="Exit System">
+</form>
+
+
+<!--
+<form action="/login" method="POST">
+  <input type="username" name="username" placeholder="Username">
+<input type="password" name="password" placeholder="Password">
+<input type="submit" value="Log in">
+</form>
+
+<script>
+
+function ih(text) {
+    alert("ALERTING BONERS: " + text);
+    document.getElementById('mytextarea').innerHTML = text;
+}
+
+</script>
+
+-->
+
+</body>
+</html>
+
+
