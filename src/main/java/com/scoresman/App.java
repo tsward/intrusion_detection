@@ -63,7 +63,10 @@ public class App
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(result);
             bw.close();
-        } catch(IOException ioe) {}
+        } catch(IOException ioe) {
+            
+        }
+
         
         System.out.println("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         

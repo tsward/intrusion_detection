@@ -122,10 +122,8 @@ def attempt_login():
             new_line = str(row[0]) + ' ' + semi + " 9 " + ground_truth
                 
             if arff_file:
-                
                 """ report (potentially) malicious behavior """
                 arff_file.write(new_line + '\n')
-            
             if rtc_mode:
                 os.system('mvn exec:java -Dexec.mainClass=com.scoresman.App -Dexec.args="runtimeClassification ' + new_line + '"')
                 f = open('cur_runtime_classification.txt', 'r')
@@ -133,7 +131,6 @@ def attempt_login():
                 f.close()
                 os.system('rm cur_runtime_classification.txt')
                 return render_template('login.html', message=message, classification=first_line)
-            
             return render_template('login.html', message=message) 
         
     query = ('SELECT * from usr where usr.username=\'' + user_name +
@@ -155,11 +152,18 @@ def attempt_login():
         query = ('SELECT login_attempts from usr where usr.username=\'' + user_name + '\'')
         numrows = curs.execute(query)
         row = curs.fetchone()
+        new_line = str(row[0]) + " 'no' 9 " + ground_truth 
         if arff_file:
-            new_line = str(row[0]) + " 'no' 9 " + ground_truth 
             """ report normal behavior """
             arff_file.write(new_line + '\n')
         message = 'Incorrect password for user ' + user_name
+        if rtc_mode:
+            os.system('mvn exec:java -Dexec.mainClass=com.scoresman.App -Dexec.args="runtimeClassification ' + new_line + '"')
+            f = open('cur_runtime_classification.txt', 'r')
+            first_line = f.readline()
+            f.close()
+            os.system('rm cur_runtime_classification.txt')
+            return render_template('login.html', message=message, classification=first_line)
         return render_template('login.html', message=message) 
     # TODO: add these when everything is working???
     #curs.close()
