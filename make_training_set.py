@@ -32,7 +32,7 @@ def valid_login():
     if r == 1:
         r = requests.post("http://localhost:5000/login", data={'username': 'admin', 'password': 'password'})
     elif r == 2:
-        r = requests.post("http://localhost:5000/login", data={'username': 'scoresman', 'password': 'pegging4life'})
+        r = requests.post("http://localhost:5000/login", data={'username': 'scoresman', 'password': 'peg4life'})
     else:
         r = requests.post("http://localhost:5000/login", data={'username': 'drremulak', 'password': 'iamdrremulak'})
 
